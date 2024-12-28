@@ -1,0 +1,8 @@
+{
+	"resource_pack_name_part_to_search": "Pepeland Pack v",
+	"raw_command": "/summon minecraft:armor_stand ~XXX ~1 ~ZZZ {HandItems:[{!5},{!6}],ArmorItems:[{!4},{!3},{!2},{!1}]}",
+	"item": "id:ITEM,tag:{display:{Name:'{\"text\":\"OPTIFINE_NAME\"}'}},Count:1",
+	"items_places": ["!6", "!5", "!4", "!3", "!2", "!1"],
+	"armor_parts": ["iron_chestplate", "diamond_chestplate", "chainmail_chestplate", "golden_chestplate", "netherite_chestplate", "leather_chestplate", "iron_helmet", "diamond_helmet", "turtle_helmet", "chainmail_helmet", "golden_helmet", "netherite_helmet", "leather_helmet", "iron_leggings", "diamond_leggings", "chainmail_leggings", "golden_leggings", "netherite_leggings", "leather_leggings", "iron_boots", "diamond_boots", "chainmail_boots", "golden_boots", "netherite_boots", "leather_boots", "carved_pumpkin", "elytra"],
+	"armor_order": ["leather", "chainmail", "golden", "iron", "diamond", "netherite", "turtle", "elytra", "carved_pumpkin"]
+}
