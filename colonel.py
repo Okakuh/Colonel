@@ -36,9 +36,6 @@ space_betwean_armor_stands_in_rows = output_settings["space_betwean_armor_stands
 
 rows = output_settings["costumes_in_columns"]
 
-# -------------------------------------------------------------------------------------------------------------
-
-
 
 # -------------------------------------------------------------------------------------------------------------
 def get_costume_optifine_name(file: list[str]) -> str:
@@ -91,14 +88,18 @@ def sort_costume_armor(unsorted_items: list[str]) -> list[list[str]]:
     
     return main_list
 
+found_pack = 0
 
 if resource_pack_name_part_to_search in str(listdir(getcwd())):
     for pth in listdir(getcwd()):
         if path.isdir(f"{getcwd()}/{pth}"):
             if resource_pack_name_part_to_search in pth:
+                found_pack = 1
                 
                 resource_pack_path = f"{getcwd()}/{pth}"
 
+                print(f"Parsing: {resource_pack_path}")
+                
                 commands_list = []
                 costumes = {}
                 
@@ -121,15 +122,17 @@ if resource_pack_name_part_to_search in str(listdir(getcwd())):
                     
                             if not items:
                                 continue
-                                
+
+                              
                             if costume_optifine_name not in costumes.keys():
+                                print(costume_optifine_name)
                                 costumes[costume_optifine_name] = []
                             
                             for item in items:
                                 if item not in items_ids.keys():
                                     print(f"Item place is not defined: {item}")
                                     while True:
-                                        print(f"Choose a place for the item form this list: left arm = 6, right arm = 5, boots = 4, leggings = 3, chest = 2, head = 1")
+                                        print(f"Choose a place for the item from this list: left arm = 6, right arm = 5, boots = 4, leggings = 3, chest = 2, head = 1")
                                         item_place = input(f"{item}'s place is: ")
                                         
                                         if "!" + item_place not in items_places:
@@ -147,7 +150,8 @@ if resource_pack_name_part_to_search in str(listdir(getcwd())):
 
                 column_width = max_costume_lenth + ((max_costume_lenth-1) * space_betwean_armor_stands_in_rows) + space_betwean_costumes_columns
 
-
+                print(f"Costumes: {len(costumes.keys())}")
+                
                 for costume_name in costumes.keys():
                     x_cord = x_start_cord + 0
                     z_coord = z_start_coord + 0
@@ -180,4 +184,10 @@ if resource_pack_name_part_to_search in str(listdir(getcwd())):
                     
                 with open(f"{resource_pack_path}.txt", mode="w") as file:
                     file.write("\n".join(commands_list))
-                
+
+if found_pack == 0:
+    print(f"Did not found any folder with '{resource_pack_name_part_to_search}' in its name!")
+
+
+while True:
+    pass  
