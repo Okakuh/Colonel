@@ -14,12 +14,12 @@ def write(path_to_json: str, data: dict) -> None:
 def open_pack(path: str) -> list[list[str]]:
     files = []
     if is_zipfile(path):
-        z = ZipFile("Pepeland Pack v.1.12.zip")
+        z = ZipFile(path)
 
         for file in z.namelist():
             if ".properties" in file:
                 with z.open(file) as myfile:
-                    files.append(str(myfile.read()).replace("b'", "").replace("'", "").split("\\r\\n"))
+                    files.append(str(myfile.read())[2:].replace("'", "").split("\\r\\n"))
         return files
     
     for root, _, files1 in walk(path):
